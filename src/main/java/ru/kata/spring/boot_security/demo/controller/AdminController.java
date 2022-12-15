@@ -18,21 +18,14 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminController {
 
-    private UserService userService;
-    private RoleService roleService;
+    private final UserService userService;
+    private final RoleService roleService;
 
     @Autowired
-    public void AdminsController(UserService userService, RoleServiceImpl roleService) {
+    public AdminController(UserService userService, RoleService roleService) {
         this.userService = userService;
         this.roleService = roleService;
     }
-
-    public AdminController(UserService userService) {
-        this.userService = userService;
-    }
-
-
-
 
     @GetMapping
     public String tableUsers(@ModelAttribute("user") User user, Model model, Authentication authentication) {

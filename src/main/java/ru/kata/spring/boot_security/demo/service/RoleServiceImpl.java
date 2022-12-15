@@ -12,10 +12,10 @@ import java.util.List;
 @Service
 public class RoleServiceImpl implements RoleService{
 
-    private RoleDao roleDao;
+    private final RoleDao roleDao;
 
     @Autowired
-    public void RoleServiceImp(RoleDao roleDao) {
+    public RoleServiceImpl(RoleDao roleDao) {
         this.roleDao = roleDao;
     }
 
@@ -31,7 +31,6 @@ public class RoleServiceImpl implements RoleService{
 
     @Override
     public Role getRoleById(Long id) {
-        System.out.println("very" + id);
         return roleDao.getRoleById(id);
     }
 

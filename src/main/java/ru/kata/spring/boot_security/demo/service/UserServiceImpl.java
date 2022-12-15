@@ -19,14 +19,12 @@ import java.util.stream.Collectors;
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
 
-    private UserDao userDao;
-    private RoleService roleService;
+    private final UserDao userDao;
 
     @Autowired
-    public void UserServiceImp(UserDao userDao, RoleService roleService) {
+    public UserServiceImpl(UserDao userDao) {
 
         this.userDao = userDao;
-        this.roleService = roleService;
 
     }
 
@@ -61,7 +59,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userDao.getUserByUsername(username);
     }
